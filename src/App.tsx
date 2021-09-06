@@ -1,6 +1,7 @@
+import Layout from "./Components/Layout"
 
 const App = () => {
-  return <div> psyop </div>;
+  return <Layout />;
 };
 
 export default App;
