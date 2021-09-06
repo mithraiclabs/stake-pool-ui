@@ -1,9 +1,6 @@
-import React from 'react';
 
 const App = () => {
-  return (
-    <div> psyop </div>
-  );
-}
+  return <div> psyop </div>;
+};
 
 export default App;
