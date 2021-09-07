@@ -3,7 +3,7 @@ import Placeholder from "src/Styled/Placeholder";
 
 const WalletHeader: React.FC = () => {
   return (
-    <Placeholder bg='orange' />
+    <Placeholder bg='orange'>psyop</Placeholder>
   )
 }
 
