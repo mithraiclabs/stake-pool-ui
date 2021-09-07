@@ -1,10 +1,8 @@
 import React from "react";
-import Placeholder from "src/Styled/Placeholder";
+import Placeholder from "src/styled/Placeholder";
 
 const WalletHeader: React.FC = () => {
-  return (
-    <Placeholder bg='orange'>psyop</Placeholder>
-  )
-}
+  return <Placeholder bg="orange">psyop</Placeholder>;
+};
 
 export default WalletHeader;
