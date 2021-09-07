@@ -1,3 +1,4 @@
+import SerumWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { PublicKey } from '@solana/web3.js';
 import React, { createContext, useEffect, useState } from 'react';
 import useConnection from '../hooks/useConnection';
@@ -9,17 +10,21 @@ import type WalletAdapter from '../utils/wallet/walletAdapter';
 const WalletContext = createContext<{
   balance: number;
   loading: boolean;
-  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   wallet?: WalletAdapter;
-  setWallet?: React.Dispatch<React.SetStateAction<WalletAdapter | undefined>>;
+  setWallet: React.Dispatch<React.SetStateAction<WalletAdapter | SerumWalletAdapter | undefined>>;
   connected: boolean;
-  setConnected?: React.Dispatch<React.SetStateAction<boolean>>;
+  setConnected: React.Dispatch<React.SetStateAction<boolean>>;
   pubKey?: PublicKey | null;
-  setPubKey?: React.Dispatch<React.SetStateAction<PublicKey | null | undefined>>;
+  setPubKey: React.Dispatch<React.SetStateAction<PublicKey | null | undefined>>;
 }>({
   balance: 0,
   loading: false,
   connected: false,
+  setLoading: () => {},
+  setWallet: () => {},
+  setPubKey: () => {},
+  setConnected: () => {},
 });
 
 const WalletProvider: React.FC = ({ children }) => {
