@@ -78,9 +78,9 @@ export function getSolanaDerivationPath(
   offset = derivationPath.writeUInt32BE(harden(44), offset); // Using BIP44
   offset = derivationPath.writeUInt32BE(harden(501), offset); // Solana's BIP44 path
 
-  if (length > 2) {
+  if (length > 2 && account !== undefined) {
     offset = derivationPath.writeUInt32BE(harden(account), offset);
-    if (length === 4) {
+    if (length === 4 && change !== undefined) {
       // @FIXME: https://github.com/project-serum/spl-token-wallet/issues/59
       offset = derivationPath.writeUInt32BE(harden(change), offset);
     }
