@@ -62,7 +62,7 @@ const WalletSelect: React.FC<{
                         fullWidth
                         disabled={!isAvailable}
                         onClick={
-                          isAvailable ? () => handleConnect(adapter) : null
+                          isAvailable ? () => handleConnect(adapter) : undefined
                         }
                       >
                         <Box

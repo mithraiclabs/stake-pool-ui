@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-
-import WalletAdapter from '../utils/wallet/walletAdapter';
-import useWallet from '../hooks/useWallet';
-import WalletSelect from './WalletSelect';
-import SerumWalletAdapter from '@project-serum/sol-wallet-adapter';
+import React, { useState } from "react";
+import Button from "@material-ui/core/Button";
+import WalletAdapter from "../utils/wallet/walletAdapter";
+import useWallet from "../hooks/useWallet";
+import WalletSelect from "./WalletSelect";
+import SerumWalletAdapter from "@project-serum/sol-wallet-adapter";
 
 const ConnectButton: React.FC = (props) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const { connect } = useWallet();
-  const { children } = props;
+  const { connect, connected } = useWallet();
 
   const handleConnect = async (adapter: WalletAdapter | SerumWalletAdapter) => {
     await connect(adapter, {});
@@ -22,13 +21,15 @@ const ConnectButton: React.FC = (props) => {
         onClose={() => setIsSelectOpen(false)}
         handleConnect={handleConnect}
       />
-      <button
-        color="red"
+      <Button
+        color="primary"
         onClick={() => setIsSelectOpen(true)}
-        style={{ whiteSpace: 'nowrap' }}
+        variant="outlined"
+        style={{ whiteSpace: "nowrap" }}
+        {...props}
       >
-        {children}
-      </button>
+        {connected ? "connected" : "connect wallet"}
+      </Button>
     </>
   );
 };
