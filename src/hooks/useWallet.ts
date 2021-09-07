@@ -1,3 +1,4 @@
+import SerumWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { useContext } from 'react';
 import WalletAdapter from 'src/utils/wallet/walletAdapter';
 import { WalletContext } from '../contexts/Wallet';
@@ -16,7 +17,7 @@ const useWallet = () => {
   } = useContext(WalletContext);
 
   // Reset state in case user is changing wallets
-  const connect = async (walletAdapter: WalletAdapter, args: any) => {
+  const connect = async (walletAdapter: WalletAdapter | SerumWalletAdapter, args: any) => {
     setPubKey(null);
     setConnected(false);
     setLoading(true);
