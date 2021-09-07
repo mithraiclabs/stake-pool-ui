@@ -1,8 +1,8 @@
-import Wallet from '@project-serum/sol-wallet-adapter';
+import SerumWalletAdapter from '@project-serum/sol-wallet-adapter';
 import { isBrowser } from '../../isNode';
 
 const getAdapter = () => {
-  return isBrowser ? new Wallet('https://www.sollet.io', '') : undefined;
+  return isBrowser ? new SerumWalletAdapter('https://www.sollet.io', '') : undefined;
 };
 
 export default getAdapter;

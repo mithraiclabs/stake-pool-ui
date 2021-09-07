@@ -1,25 +1,22 @@
 
 import type WalletAdapter from "./walletAdapter";
-import type SerumWallet from '@project-serum/sol-wallet-adapter';
+import type SerumWalletAdapter from '@project-serum/sol-wallet-adapter';
 
 import getSolletAdapter from "./adapters/sollet";
 import getPhantomAdapter from "./adapters/phantom";
-import getMathAdapter from "./adapters/math";
+import getMathAdapter, { MathOrPhantomAdapter } from "./adapters/math";
 import getSolongAdapter from "./adapters/solong";
 import getSolflareAdapter from "./adapters/solflare";
 import getSolletExtAdaptor from "./adapters/solletExtension";
 
 declare global {
   interface Window {
-    solana: {
-      isPhantom: boolean;
-      isMathWallet: boolean;
-    };
+    solana: MathOrPhantomAdapter;
     solong: any;
   }
 }
 
-type GetAdapterFunction = () => WalletAdapter | SerumWallet | undefined;
+type GetAdapterFunction = () => WalletAdapter | SerumWalletAdapter | undefined;
 
 interface Wallet {
   name: string;

@@ -1,7 +1,13 @@
 import EventEmitter from 'eventemitter3';
 import { PublicKey, Transaction } from '@solana/web3.js';
 import type WalletAdapter from '../walletAdapter';
-import { MathOrPhantomAdapter } from '../../../..';
+
+export interface MathOrPhantomAdapter extends WalletAdapter {
+  isMathWallet: boolean
+  isPhantom: boolean
+  getAccount: () => Promise<string>
+  connect: (arg: { onlyIfTrusted: boolean }) => void
+}
 
 class MathWalletAdapter extends EventEmitter implements WalletAdapter {
   _publicKey?: PublicKey;
