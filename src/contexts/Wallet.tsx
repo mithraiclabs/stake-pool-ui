@@ -11,7 +11,7 @@ const WalletContext = createContext<{
   balance: number;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  wallet?: WalletAdapter;
+  wallet?: WalletAdapter | SerumWalletAdapter;
   setWallet: React.Dispatch<React.SetStateAction<WalletAdapter | SerumWalletAdapter | undefined>>;
   connected: boolean;
   setConnected: React.Dispatch<React.SetStateAction<boolean>>;
@@ -32,7 +32,7 @@ const WalletProvider: React.FC = ({ children }) => {
   const pushNotification = (msg: any) => console.log(msg);
   const { connection } = useConnection();
   const [loading, setLoading] = useState(false);
-  const [wallet, setWallet] = useState<WalletAdapter>();
+  const [wallet, setWallet] = useState<WalletAdapter | SerumWalletAdapter | undefined>();
   const [connected, setConnected] = useState(false);
   const [pubKey, setPubKey] = useState<PublicKey | undefined |null>(null);
   // balance of public key in lamports
