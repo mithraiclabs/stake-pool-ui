@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ledgerhq/hw-transport": "^6.3.0",
+    "@ledgerhq/hw-transport-webusb": "^6.6.0",
     "@project-serum/sol-wallet-adapter": "^0.2.5",
     "@solana/web3.js": "^1.24.2",
     "@testing-library/jest-dom": "^5.14.1",

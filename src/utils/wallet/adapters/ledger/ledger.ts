@@ -9,18 +9,18 @@ import type WalletAdapter from '../../walletAdapter';
 class LedgerWalletAdapter extends EventEmitter implements WalletAdapter {
   _connecting: boolean;
 
-  _publicKey: PublicKey | null;
+  _publicKey?: PublicKey;
 
   _transport: Transport | null;
 
   constructor() {
     super();
     this._connecting = false;
-    this._publicKey = null;
+    this._publicKey = undefined;
     this._transport = null;
   }
 
-  get publicKey(): PublicKey | null {
+  get publicKey(): PublicKey | undefined {
     return this._publicKey;
   }
 
@@ -71,7 +71,7 @@ class LedgerWalletAdapter extends EventEmitter implements WalletAdapter {
       // @TODO: transport selection (WebUSB, WebHID, bluetooth, ...)
       this._transport = await TransportWebUSB.create();
       // @TODO: account selection
-      this._publicKey = await getPublicKey(this._transport);
+      this._publicKey = this._transport ? await getPublicKey(this._transport) : undefined;
       this.emit('connect', this._publicKey);
       this._connecting = false;
     } catch (error) {
@@ -91,7 +91,7 @@ class LedgerWalletAdapter extends EventEmitter implements WalletAdapter {
     }
 
     this._connecting = false;
-    this._publicKey = null;
+    this._publicKey = undefined;
 
     if (emit) {
       this.emit('disconnect');
