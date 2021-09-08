@@ -1,11 +1,20 @@
 import React from "react";
-import Placeholder from "src/styled/Placeholder";
+import styled from "styled-components";
 import ConnectButton from "./ConnectButton";
 
+const FixedHeader = styled.div`
+padding-top: 2rem;
+position: fixed;
+top: 0;
+background-color: orange;
+`;
+
 const WalletHeader: React.FC = () => {
-  return <Placeholder bg="orange">
-    <ConnectButton />
-  </Placeholder>;
+  return (
+    <FixedHeader>
+      <ConnectButton />
+    </FixedHeader>
+  );
 };
 
 export default WalletHeader;

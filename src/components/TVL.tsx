@@ -3,7 +3,9 @@ import Placeholder from 'src/styled/Placeholder';
 
 const TVL: React.FC = () => {
   return (
-    <Placeholder bg='blue'/>
+    <Placeholder bg='blue'>
+      Total staked: 
+    </Placeholder>
   )
 }
 
